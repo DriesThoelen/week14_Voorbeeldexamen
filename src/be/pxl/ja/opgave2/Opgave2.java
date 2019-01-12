@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Opgave2 {
 	public static void main(String[] args) {
-		List<List<String>> passPhrases = new ArrayList<>();
+		List<PassPhraseValidator<String>> passPhrasesValidators = new ArrayList<>();
 
 		try (BufferedReader reader = Files.newBufferedReader(Paths.get("resources/opgave2/passphrases.txt"))) {
 			String line = null;
@@ -18,7 +18,9 @@ public class Opgave2 {
 			while ((line = reader.readLine()) != null) {
 				String[] passPhraseArray = line.split(" ");
 				List<String> passPhrase = Arrays.asList(passPhraseArray);
-				passPhrases.add(passPhrase);
+				PassPhraseValidator<String> passPhraseValidator = new PassPhraseValidator<>(passPhrase);
+				passPhraseValidator.start();
+				passPhrasesValidators.add(passPhraseValidator);
 			}
 		} catch (IOException ioex) {
 			ioex.printStackTrace();
@@ -26,12 +28,15 @@ public class Opgave2 {
 
 		int numberOfValidPassPhrases = 0;
 
-		for (List<String> passPhrase:passPhrases) {
-			PassPhraseValidator<String> passPhraseValidator = new PassPhraseValidator<>(passPhrase);
-			passPhraseValidator.start();
+		for (PassPhraseValidator<String> passPhraseValidator:passPhrasesValidators) {
+			try {
+				passPhraseValidator.join();
 
-			if(passPhraseValidator.isValid()) {
-				numberOfValidPassPhrases++;
+				if(passPhraseValidator.isValid()) {
+					numberOfValidPassPhrases++;
+				}
+			} catch (InterruptedException iex) {
+				iex.printStackTrace();
 			}
 		}
 
