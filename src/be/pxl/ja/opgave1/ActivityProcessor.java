@@ -64,7 +64,9 @@ public class ActivityProcessor {
 						points = (int) Math.floor(ActivityType.RIDING.getPointsPerKm() * activity.getDistance());
 					}
 
-					customer.addPoints(points);
+					if (customer != null) {
+						customer.addPoints(points);
+					}
 
 					activities.add(activity);
 				}
