@@ -57,4 +57,17 @@ public class Customer {
 	public int getPoints() {
 		return points;
 	}
+
+	public void addPoints(int amount) { points += amount; }
+
+	@Override
+	public String toString() {
+		return
+				"Customer Number: " + customerNumber + "\n" +
+				"Name: " + name + "\n" +
+				"First Name: " + firstName + "\n" +
+				"City: " + city + "\n" +
+				"dateOfBirth: " + dateOfBirth + "\n" +
+				"Points: " + points + "\n";
+	}
 }

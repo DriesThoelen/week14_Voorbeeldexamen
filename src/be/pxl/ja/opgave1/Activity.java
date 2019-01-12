@@ -51,4 +51,13 @@ public class Activity {
 	public ActivityTracker getTracker() {
 		return tracker;
 	}
+
+	@Override
+	public String toString() {
+		return  "Customer Id : " + customerNumber + "\n" +
+				"Activity: " + activityType.toString().substring(0, 1).toUpperCase() + activityType.toString().substring(1).toLowerCase() + "\n" +
+				"Distance: " + distance + " km" + "\n" +
+ 				"Date: " + activityDate + "\n" +
+				"Tracker: " + tracker.toString().substring(0, 1).toUpperCase() + tracker.toString().substring(1).toLowerCase() + "\n";
+	}
 }

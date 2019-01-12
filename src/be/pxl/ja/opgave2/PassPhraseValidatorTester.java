@@ -13,13 +13,13 @@ public class PassPhraseValidatorTester {
 		validStringPassPhrase.start();
 		PassPhraseValidator<String> invalidStringPassPhrase = new PassPhraseValidator<>(Arrays.asList("kat", "wombat", "kat", "olifant", "wombat", "ooievaar", "kat"));
 		invalidStringPassPhrase.start();
-		
+
 		System.out.println(validIntegerPassPhrase.getPassPhrase() + " valid: " + validIntegerPassPhrase.isValid());
-			
+
 		System.out.println(invalidIntegerPassPhrase.getPassPhrase() + " valid: " + invalidIntegerPassPhrase.isValid());
-		
+
 		System.out.println(validStringPassPhrase.getPassPhrase() + " valid: " + validStringPassPhrase.isValid());
-		
+
 		System.out.println(invalidStringPassPhrase.getPassPhrase() + " valid: " + invalidStringPassPhrase.isValid());
 
 	
